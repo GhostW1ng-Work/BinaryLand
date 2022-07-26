@@ -151,7 +151,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 34533466}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.8, y: -0.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.3973587, y: 2.942913, z: 0.99933827}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -347,7 +347,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 822568415}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8, y: -0.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.398946, y: 2.944862, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2298,11 +2298,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6741156892080620544, guid: 727567d201f268845b18ffb79f33dcba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.596
+      value: -1.54
       objectReference: {fileID: 0}
     - target: {fileID: 6741156892080620544, guid: 727567d201f268845b18ffb79f33dcba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.477
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6741156892080620544, guid: 727567d201f268845b18ffb79f33dcba, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2379,7 +2379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7754377191371694733, guid: ae1ad870c854cd94aad63d141a45eddb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.38
+      value: -3.62
       objectReference: {fileID: 0}
     - target: {fileID: 7754377191371694733, guid: ae1ad870c854cd94aad63d141a45eddb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2415,6 +2415,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7754377191371694733, guid: ae1ad870c854cd94aad63d141a45eddb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7754377191371694769, guid: ae1ad870c854cd94aad63d141a45eddb, type: 3}
+      propertyPath: Z1
+      value: 1000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7754377191371694769, guid: ae1ad870c854cd94aad63d141a45eddb, type: 3}
+      propertyPath: Z2
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7754377191371694769, guid: ae1ad870c854cd94aad63d141a45eddb, type: 3}

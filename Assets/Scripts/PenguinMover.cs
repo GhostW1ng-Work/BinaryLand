@@ -8,6 +8,9 @@ public class PenguinMover : MonoBehaviour
     [SerializeField] private bool _isInvert = false;
     [SerializeField] private bool _canMove;
     [SerializeField] private Spring _spring;
+    [SerializeField] private float Z1;
+    [SerializeField] private float Z2;
+
 
     private Rigidbody2D _rigidBody2D;
 
@@ -26,13 +29,45 @@ public class PenguinMover : MonoBehaviour
         _horizontal = Input.GetAxisRaw("Horizontal");
         _vertical = Input.GetAxisRaw("Vertical");
 
-        if(_horizontal > 0)
+        if(_isInvert == false)
         {
-            gameObject.transform.localScale = new Vector3(0.906f, 0.906f, 0.906f);
+            if (_horizontal > 0)
+            {
+                _spring.gameObject.transform.localPosition = new Vector3(0.86f, -0.2f, 0);
+                _spring.gameObject.transform.localRotation = new Quaternion(0, 0, 0, 0);
+            }
+
+            if (_horizontal < 0)
+            {
+                _spring.gameObject.transform.localPosition = new Vector3(-0.86f, -0.2f, 0);
+                _spring.gameObject.transform.localRotation = new Quaternion(0, 0, 180, 0);
+            }
+         
         }
-        if (_horizontal < 0)
+        else
         {
-            gameObject.transform.localScale = new Vector3(-0.906f, 0.906f, 0.906f);
+            if (_horizontal > 0)
+            {
+                _spring.gameObject.transform.localPosition = new Vector3(-0.86f, -0.2f, 0);
+                _spring.gameObject.transform.localRotation = new Quaternion(0, 0, Z1, 360);
+            }
+
+            if (_horizontal < 0)
+            {
+                _spring.gameObject.transform.localPosition = new Vector3(0.86f, -0.2f, 0);
+                _spring.gameObject.transform.localRotation = new Quaternion(0, 0, Z2, 360);
+            }
+        }
+
+        if (_vertical > 0)
+        {
+            _spring.gameObject.transform.localPosition = new Vector3(0.167f, 0.961f, 0);
+            _spring.gameObject.transform.localRotation = new Quaternion(0, 0, 90, 90);
+        }
+        if (_vertical < 0)
+        {
+            _spring.gameObject.transform.localPosition = new Vector3(-0.167f, -0.979f, 0);
+            _spring.gameObject.transform.localRotation = new Quaternion(0, 0, -90, 90);
         }
 
         if (Input.GetKey(KeyCode.Z))
