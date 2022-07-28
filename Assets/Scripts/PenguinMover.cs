@@ -13,6 +13,7 @@ public class PenguinMover : MonoBehaviour
 
 
     private Rigidbody2D _rigidBody2D;
+    private Animator _animator;
 
     private float _horizontal;
     private float _vertical;
@@ -21,11 +22,13 @@ public class PenguinMover : MonoBehaviour
     void Start()
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
         _canMove = true;
     }
 
     void Update()
     {
+
         _horizontal = Input.GetAxisRaw("Horizontal");
         _vertical = Input.GetAxisRaw("Vertical");
 
@@ -92,6 +95,9 @@ public class PenguinMover : MonoBehaviour
                 
             }
 
+            _animator.SetFloat("HorizontalSpeed", _horizontal);
+            _animator.SetFloat("VerticalSpeed", _vertical);
+
             if (_isInvert == false)
                 _rigidBody2D.velocity = new Vector2(_horizontal * _speedRun, _vertical * _speedRun);
 
@@ -104,5 +110,15 @@ public class PenguinMover : MonoBehaviour
     {
         _rigidBody2D.constraints = RigidbodyConstraints2D.FreezePosition;
         _canMove = false;
+    }
+
+    public void SetIsCatched()
+    {
+        _animator.SetBool("IsCatch", true);
+    }
+
+    public void SetTransform(Transform transform)
+    {
+        gameObject.transform.position = transform.position;
     }
 }
