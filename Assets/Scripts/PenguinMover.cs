@@ -18,6 +18,7 @@ public class PenguinMover : MonoBehaviour
     private float _horizontal;
     private float _vertical;
     private float _moveLimiter = 0.7f;
+    private bool _isCatched = false;
 
     void Start()
     {
@@ -106,15 +107,34 @@ public class PenguinMover : MonoBehaviour
         }  
     }
 
-    public void SetCanMoveFalse()
+    public void SetCanMove()
     {
-        _rigidBody2D.constraints = RigidbodyConstraints2D.FreezePosition;
-        _canMove = false;
+        if(_canMove == true)
+        {
+            _rigidBody2D.constraints = RigidbodyConstraints2D.FreezePosition;
+            _canMove = false;
+        }
+        else
+        {
+            _canMove = true;
+            _rigidBody2D.constraints = RigidbodyConstraints2D.None;
+            _rigidBody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+        
     }
 
     public void SetIsCatched()
     {
-        _animator.SetBool("IsCatch", true);
+        if(_isCatched == true)
+        {
+            _isCatched = false;
+            _animator.SetBool("IsCatch", _isCatched);
+        }
+        else
+        {
+            _isCatched = true;
+            _animator.SetBool("IsCatch", _isCatched);
+        }
     }
 
     public void SetTransform(Transform transform)

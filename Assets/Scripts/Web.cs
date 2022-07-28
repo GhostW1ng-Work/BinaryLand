@@ -10,8 +10,17 @@ public class Web : MonoBehaviour
         {
             Debug.Log("Попал");
             mover.SetTransform(_webTransform);
-            mover.SetCanMoveFalse();
+            mover.SetCanMove();
             mover.SetIsCatched();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.TryGetComponent(out PenguinMover mover))
+        {
+            mover.SetIsCatched();
+            mover.SetCanMove();
         }
     }
 
