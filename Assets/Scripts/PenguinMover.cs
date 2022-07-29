@@ -19,12 +19,14 @@ public class PenguinMover : MonoBehaviour
     private float _vertical;
     private float _moveLimiter = 0.7f;
     private bool _isCatched = false;
+    private bool _canAttack;
 
     void Start()
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _canMove = true;
+        _canAttack = true;
     }
 
     void Update()
@@ -33,7 +35,7 @@ public class PenguinMover : MonoBehaviour
         _horizontal = Input.GetAxisRaw("Horizontal");
         _vertical = Input.GetAxisRaw("Vertical");
 
-        if(_isInvert == false)
+        if (_isInvert == false)
         {
             if (_horizontal > 0)
             {
@@ -46,7 +48,7 @@ public class PenguinMover : MonoBehaviour
                 _spring.gameObject.transform.localPosition = new Vector3(-0.86f, -0.2f, 0);
                 _spring.gameObject.transform.localRotation = new Quaternion(0, 0, 180, 0);
             }
-         
+
         }
         else
         {
@@ -74,12 +76,12 @@ public class PenguinMover : MonoBehaviour
             _spring.gameObject.transform.localRotation = new Quaternion(0, 0, -90, 90);
         }
 
-        if (Input.GetKey(KeyCode.Z))
+        if (Input.GetKey(KeyCode.Z) && _canAttack == true)
         {
             _spring.gameObject.SetActive(true);
         }
 
-        if (Input.GetKeyUp(KeyCode.Z))
+        if (Input.GetKeyUp(KeyCode.Z) && _canAttack == true)
         {
             _spring.gameObject.SetActive(false);
         }
@@ -87,13 +89,13 @@ public class PenguinMover : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(_canMove == true)
+        if (_canMove == true)
         {
             if (_horizontal != 0 && _vertical != 0)
             {
                 _horizontal *= _moveLimiter;
                 _vertical *= _moveLimiter;
-                
+
             }
 
             _animator.SetFloat("HorizontalSpeed", _horizontal);
@@ -104,12 +106,12 @@ public class PenguinMover : MonoBehaviour
 
             else
                 _rigidBody2D.velocity = new Vector2(-_horizontal * _speedRun, _vertical * _speedRun);
-        }  
+        }
     }
 
     public void SetCanMove()
     {
-        if(_canMove == true)
+        if (_canMove == true)
         {
             _rigidBody2D.constraints = RigidbodyConstraints2D.FreezePosition;
             _canMove = false;
@@ -120,25 +122,21 @@ public class PenguinMover : MonoBehaviour
             _rigidBody2D.constraints = RigidbodyConstraints2D.None;
             _rigidBody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
-        
     }
 
     public void SetIsCatched()
     {
-        if(_isCatched == true)
-        {
-            _isCatched = false;
+            _isCatched = !_isCatched;
             _animator.SetBool("IsCatch", _isCatched);
-        }
-        else
-        {
-            _isCatched = true;
-            _animator.SetBool("IsCatch", _isCatched);
-        }
     }
 
     public void SetTransform(Transform transform)
     {
         gameObject.transform.position = transform.position;
+    }
+
+    public void SetCanAttack()
+    {
+        _canAttack = !_canAttack;
     }
 }
