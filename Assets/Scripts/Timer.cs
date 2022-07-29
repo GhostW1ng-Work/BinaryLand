@@ -39,6 +39,7 @@ public class Timer : MonoBehaviour
             _penguins[i].SetCanMove();
             _penguins[i].SetCanAttack();
             _penguins[i].SetIsGameOverTrue();
+            Time.timeScale = 0;
         }
     }
 }
