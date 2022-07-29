@@ -10,7 +10,6 @@ public class PenguinMover : MonoBehaviour
     [SerializeField] private float Z1;
     [SerializeField] private float Z2;
 
-
     private Rigidbody2D _rigidBody2D;
     private Animator _animator;
     private BoxCollider2D _collider;
