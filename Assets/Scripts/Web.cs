@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Web : MonoBehaviour
+public class Web : IWeb
 {
     [SerializeField] private Transform _webTransform;
 
@@ -24,10 +24,5 @@ public class Web : MonoBehaviour
             mover.SetCanAttack();
             mover.SetCanMove();
         }
-    }
-
-    public void WebDestroy()
-    {
-        gameObject.SetActive(false);
     }
 }

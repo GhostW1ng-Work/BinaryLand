@@ -1,0 +1,43 @@
+using UnityEngine;
+
+public class Spider : IWeb 
+{
+    [SerializeField] private float _moveSpeed;
+    [SerializeField] private Transform[] _points;
+
+    private BoxCollider2D _collider2D;
+    private int _currentPoint;
+
+    private void Start()
+    {
+        _currentPoint = 0;
+        _collider2D = GetComponent<BoxCollider2D>();
+    }
+
+    private void Update()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, _points[_currentPoint].position, _moveSpeed * Time.deltaTime);
+
+        if(Vector2.Distance(transform.position, _points[_currentPoint].position) < 0.2f)
+        {
+            _currentPoint++;
+        }
+
+        if(_currentPoint == _points.Length)
+        {
+            _currentPoint = 0;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.TryGetComponent(out PenguinMover mover))
+        {
+            mover.SetIsCatched();
+            mover.SetCanMove();
+            mover.SetCanAttack();
+            mover.SetIsCatchedSpiderTrue();
+            _collider2D.enabled = false;
+        }
+    }
+}

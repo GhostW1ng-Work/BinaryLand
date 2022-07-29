@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PenguinMover : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class PenguinMover : MonoBehaviour
     private float _moveLimiter = 0.7f;
     private bool _isCatched = false;
     private bool _canAttack;
+    private bool _isCatchedSpider;
+
+    public bool IsCatchedSpider => _isCatchedSpider;
+
+    public event UnityAction CatchedSpider;
 
     void Start()
     {
@@ -25,6 +31,7 @@ public class PenguinMover : MonoBehaviour
         _animator = GetComponent<Animator>();
         _canMove = true;
         _canAttack = true;
+        _isCatchedSpider = false;
         _spring.gameObject.transform.localPosition = new Vector3(0.86f, -0.2f, 0);
     }
 
@@ -170,5 +177,17 @@ public class PenguinMover : MonoBehaviour
     public void SetCanAttack()
     {
         _canAttack = !_canAttack;
+    }
+
+    public void SetIsGameOverTrue()
+    {
+        _animator.SetBool("IsGameOver", true);
+        
+    }
+
+    public void SetIsCatchedSpiderTrue()
+    {
+        _isCatchedSpider = true;
+        CatchedSpider?.Invoke();
     }
 }
