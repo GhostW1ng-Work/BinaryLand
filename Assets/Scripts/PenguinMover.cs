@@ -13,6 +13,7 @@ public class PenguinMover : MonoBehaviour
 
     private Rigidbody2D _rigidBody2D;
     private Animator _animator;
+    private BoxCollider2D _collider;
 
     private float _horizontal;
     private float _vertical;
@@ -29,9 +30,12 @@ public class PenguinMover : MonoBehaviour
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _collider = GetComponent<BoxCollider2D>();
+
         _canMove = true;
         _canAttack = true;
         _isCatchedSpider = false;
+
         _spring.gameObject.transform.localPosition = new Vector3(0.86f, -0.2f, 0);
     }
 
@@ -189,5 +193,15 @@ public class PenguinMover : MonoBehaviour
     {
         _isCatchedSpider = true;
         CatchedSpider?.Invoke();
+    }
+
+    public void EnableWinAnimation()
+    {
+        _animator.SetBool("IsWin", true);
+    }
+
+    public void DisableColliders()
+    {
+        _collider.enabled = false;
     }
 }
