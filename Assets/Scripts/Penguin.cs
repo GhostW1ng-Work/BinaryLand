@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(BoxCollider2D), typeof(Rigidbody2D), typeof(Animator))]
 public class Penguin : MonoBehaviour
 {
     [SerializeField] private float _speedRun = 20.0f;
