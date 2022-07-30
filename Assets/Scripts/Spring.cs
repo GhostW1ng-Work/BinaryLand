@@ -7,10 +7,10 @@ public class Spring : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent(out IWeb web))
+        if(collision.TryGetComponent(out Enemy enemy))
         {
-            ScoreChanged?.Invoke(web.ScoreAmount);
-            web.WebDestroy();
+            ScoreChanged?.Invoke(enemy.ScoreAmount);
+            enemy.WebDestroy();
         }
     }
 }

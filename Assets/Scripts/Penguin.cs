@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PenguinMover : MonoBehaviour
+public class Penguin : MonoBehaviour
 {
     [SerializeField] private float _speedRun = 20.0f;
     [SerializeField] private bool _isInvert = false;
@@ -185,7 +185,6 @@ public class PenguinMover : MonoBehaviour
     public void SetIsGameOverTrue()
     {
         _animator.SetBool("IsGameOver", true);
-        
     }
 
     public void SetIsCatchedSpiderTrue()

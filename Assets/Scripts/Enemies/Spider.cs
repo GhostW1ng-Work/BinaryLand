@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Spider : IWeb 
+public class Spider : Enemy 
 {
     [SerializeField] private float _moveSpeed;
     [SerializeField] private Transform[] _points;
@@ -31,12 +31,12 @@ public class Spider : IWeb
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent(out PenguinMover mover))
+        if(collision.TryGetComponent(out Penguin penguin))
         {
-            mover.SetIsCatched();
-            mover.SetCanMove();
-            mover.SetCanAttack();
-            mover.SetIsCatchedSpiderTrue();
+            penguin.SetIsCatched();
+            penguin.SetCanMove();
+            penguin.SetCanAttack();
+            penguin.SetIsCatchedSpiderTrue();
             _collider2D.enabled = false;
         }
     }

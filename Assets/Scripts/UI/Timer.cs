@@ -5,7 +5,7 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] private float _maxTime;
     [SerializeField] private TMP_Text _text;
-    [SerializeField] private PenguinMover[] _penguins;
+    [SerializeField] private Penguin[] _penguins;
 
     private int _time;
  

@@ -4,7 +4,7 @@ public class Heart : MonoBehaviour
 {
     [SerializeField] private Transform _heartTransform;
     [SerializeField] private int _penguinCount;
-    [SerializeField] private PenguinMover[] _penguins;
+    [SerializeField] private Penguin[] _penguins;
 
     private SpriteRenderer _spriteRenderer;
 
@@ -15,7 +15,7 @@ public class Heart : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent(out PenguinMover mover))
+        if(collision.TryGetComponent(out Penguin mover))
         {
             _penguinCount++;
         }
